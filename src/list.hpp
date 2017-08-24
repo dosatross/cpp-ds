@@ -7,6 +7,12 @@ Student ID: s3486075
 #include "datastructure.hpp"
 #include <list>
 
+/*
+@class list class contains an std::list and implements the methods for adding a
+word to the list dictionary, adding a line to the word count map and sending
+the word count data to a csv
+this class inherits from the datastructure class
+*/
 
 class list : public datastructure
 {

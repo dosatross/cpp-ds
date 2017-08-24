@@ -1,24 +1,17 @@
 /*
 Author: Hayden Warmington
 Student ID: s3486075
-
-edit distance
-datastructures
-read dictionary and text file
 */
 
 /*
-why do the specs say that a bst/custom_list should handle the textfile list? shouldnt it be handled by map?     load line into custom ds use map to tokenize  this is because io is the most costly operation
-
 TODO
 run valgrind
 ds's miss the last line print to file
 ordering out word count output
 
-custom_bst errors/prints
+replace enum direction with get_parent()
 
 comments for lines and functions
-!!!read me file
 make sure i dont go over 80 characters/line
 */
 
@@ -40,7 +33,7 @@ int main(int argc, char*argv[])
 	{
 		std::cout << "Could not open file: " << cmd_parser.get_dictionary_file_string() << std::endl;
 		dict_stream.close();
-		return 0;
+		return EXIT_FAILURE;
 	}
 
 	std::ifstream txt_stream;
@@ -50,7 +43,7 @@ int main(int argc, char*argv[])
 		std::cout << "Could not open file: " << cmd_parser.get_input_file_string() << std::endl;
 		dict_stream.close();
 		txt_stream.close();
-		return 0;
+		return EXIT_FAILURE;
 	}
 
 	std::ofstream out_stream;
@@ -61,7 +54,7 @@ int main(int argc, char*argv[])
 		dict_stream.close();
 		txt_stream.close();
 		out_stream.close();
-		return 0;
+		return EXIT_FAILURE;
 	}
 
 
@@ -98,7 +91,7 @@ int main(int argc, char*argv[])
 		dict_stream.close();
 		txt_stream.close();
 		out_stream.close();
-		return 0;
+		return EXIT_SUCCESS;
 	}
 
 	while (getline(dict_stream, line) && dict_stream.good())
@@ -117,5 +110,5 @@ int main(int argc, char*argv[])
 	txt_stream.close();
 	out_stream.close();
 
-	return 0;
+	return EXIT_SUCCESS;
 }

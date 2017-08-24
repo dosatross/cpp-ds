@@ -4,7 +4,6 @@ Student ID: s3486075
 */
 #include "set.hpp"
 
-
 void set::add_line_to_dict(std::string line)
 {
 	dictionary.insert(line);

@@ -7,6 +7,14 @@ Student ID: s3486075
 #include <string>
 #include <memory>
 
+/*
+@class bst_node contains all methods to interface with the node
+bst_node only supports the std::string data type
+each node owns (through unique_ptr) its left and right children and has a
+pointer to its parent
+each node has a count for each string to avoid duplicates in the bst
+*/
+
 class bst_node
 {
 	private:

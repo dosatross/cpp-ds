@@ -4,7 +4,6 @@ Student ID: s3486075
 */
 #include "list.hpp"
 
-
 void list::add_line_to_dict(std::string line)
 {
 	dictionary.push_front(line);

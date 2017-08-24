@@ -11,6 +11,17 @@ Student ID: s3486075
 
 #define DELIM " 1234567890!@#$%^&*()_+=[{}]\\|;:'\"<>,./?"
 
+/*
+@class datastructure contains all the common members of each data structure
+it defines a tokeniser to specify delimitters, a map for word counts and an
+initial value for the minimum edit distance
+it contains virtual methods for adding a word to the datastructure dictionary, 
+adding a line to the word count map, sending the word count data to a csv and 
+initialising the dictionary
+it also has the edit distance method to find fuzzy words of map elements in the 
+dictionary
+*/
+
 class datastructure
 {
 	protected:

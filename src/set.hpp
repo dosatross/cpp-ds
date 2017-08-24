@@ -7,6 +7,12 @@ Student ID: s3486075
 #include "datastructure.hpp"
 #include <set>
 
+/*
+@class set class contains an std::set and implements the methods for adding a
+word to the set dictionary, adding a line to the word count map and sending
+the word count data to a csv
+this class inherits from the datastructure class
+*/
 
 class set : public datastructure
 {

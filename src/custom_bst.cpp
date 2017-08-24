@@ -9,7 +9,7 @@ custom_bst::custom_bst()
 	root = nullptr;
 }
 
-void custom_bst::insert(std::string str)
+int custom_bst::insert(std::string str)
 {
 	bst_node* curr = root.get();
 	std::unique_ptr<bst_node> new_node = std::make_unique<bst_node>(str);
@@ -18,7 +18,7 @@ void custom_bst::insert(std::string str)
 	if (root == nullptr) //if bst empty
 	{
 		root = std::move(new_node);
-		return;
+		return 0;
 	}
 
 	while (curr)
@@ -29,7 +29,7 @@ void custom_bst::insert(std::string str)
 			{
 				new_node->set_parent(curr);
 				curr->set_left(std::move(new_node));
-				return;
+				return 0;
 			}
 			else
 			{
@@ -42,7 +42,7 @@ void custom_bst::insert(std::string str)
 			{
 				new_node->set_parent(curr);
 				curr->set_right(std::move(new_node));
-				return;
+				return 0;
 			}
 			else
 			{
@@ -52,12 +52,12 @@ void custom_bst::insert(std::string str)
 		else  //if curr = newstr
 		{
 			curr->incr_count();
-			return;
+			return 0;
 		}
 	}
 }
 
-void custom_bst::delete_one(std::string str)
+int custom_bst::delete_one(std::string str)
 {
 	bst_node* parent = nullptr;
 	bst_node* curr = root.get();
@@ -87,17 +87,17 @@ void custom_bst::delete_one(std::string str)
 					if (curr == root.get())
 					{
 						root = nullptr;
-						return;
+						return 0;
 					}
 					if (dir == LEFT)
 					{
 						parent->set_left(std::move(nullptr));
-						return;
+						return 0;
 					}
 					if (dir == RIGHT)
 					{
 						parent->set_right(std::move(nullptr));
-						return;
+						return 0;
 					}
 				}
 				else if(curr->get_left() != nullptr && curr->get_right() == nullptr)
@@ -105,7 +105,7 @@ void custom_bst::delete_one(std::string str)
 					if (curr == root.get())
 					{
 						root = std::move(curr->get_left_ptr());
-						return;
+						return 0;
 					}
 
 					if (dir == LEFT)
@@ -116,14 +116,14 @@ void custom_bst::delete_one(std::string str)
 					{
 						parent->set_right(std::move(curr->get_left_ptr()));
 					}
-					return;
+					return 0;
 				}
 				else if (curr->get_left() == nullptr && curr->get_right() != nullptr)
 				{
 					if (curr == root.get())
 					{
 						root = std::move(curr->get_right_ptr());
-						return;
+						return 0;
 					}
 
 					if (dir == LEFT)
@@ -134,7 +134,7 @@ void custom_bst::delete_one(std::string str)
 					{
 						parent->set_right(std::move(curr->get_right_ptr()));
 					}
-					return;
+					return 0;
 				}
 				else if (curr->get_left() != nullptr && curr->get_right() != nullptr)
 				{
@@ -146,17 +146,16 @@ void custom_bst::delete_one(std::string str)
 
 					curr->set_string(replace_string);
 					curr->set_count(replace_count);
-					return;
+					return 0;
 				}
 			}
-			return;
+			return 0;
 		}
 	}
-	error_string_not_found();
-	return;
+	return -1;
 }
 
-void custom_bst::delete_all(std::string str)
+int custom_bst::delete_all(std::string str)
 {
 	bst_node* parent = nullptr;
 	bst_node* curr = root.get();
@@ -183,17 +182,17 @@ void custom_bst::delete_all(std::string str)
 				if (curr == root.get())
 				{
 					root = nullptr;
-					return;
+					return 0;
 				}
 				if (dir == LEFT)
 				{
 					parent->set_left(std::move(nullptr));
-					return;
+					return 0;
 				}
 				if (dir == RIGHT)
 				{
 					parent->set_right(std::move(nullptr));
-					return;
+					return 0;
 				}
 			}
 			else if (curr->get_left() != nullptr && curr->get_right() == nullptr)
@@ -201,7 +200,7 @@ void custom_bst::delete_all(std::string str)
 				if (curr == root.get())
 				{
 					root = std::move(curr->get_left_ptr());
-					return;
+					return 0;
 				}
 
 				if (dir == LEFT)
@@ -212,14 +211,14 @@ void custom_bst::delete_all(std::string str)
 				{
 					parent->set_right(std::move(curr->get_left_ptr()));
 				}
-				return;
+				return 0;
 			}
 			else if (curr->get_left() == nullptr && curr->get_right() != nullptr)
 			{
 				if (curr == root.get())
 				{
 					root = std::move(curr->get_right_ptr());
-					return;
+					return 0;
 				}
 
 				if (dir == LEFT)
@@ -230,7 +229,7 @@ void custom_bst::delete_all(std::string str)
 				{
 					parent->set_right(std::move(curr->get_right_ptr()));
 				}
-				return;
+				return 0;
 			}
 			else if (curr->get_left() != nullptr && curr->get_right() != nullptr)
 			{
@@ -242,12 +241,11 @@ void custom_bst::delete_all(std::string str)
 
 				curr->set_string(replace_string);
 				curr->set_count(replace_count);
-				return;
+				return 0;
 			}
 		}
 	}
-	error_string_not_found();
-	return;
+	return -1;
 }
 
 /*
@@ -278,11 +276,6 @@ int custom_bst::search(std::string str)
 		}
 	}
 	return -1;
-}
-
-void custom_bst::print()
-{
-	ordered_print(root.get());
 }
 
 void custom_bst::ordered_print(bst_node* curr)
@@ -325,11 +318,6 @@ bst_node* custom_bst::get_min(bst_node* curr)
 bst_node* custom_bst::get_root()
 {
 	return root.get();
-}
-
-void custom_bst::error_string_not_found()
-{
-	std::cout << "string does not exist" << std::endl;
 }
 
 

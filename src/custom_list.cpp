@@ -10,7 +10,7 @@ custom_list::custom_list()
 	head = nullptr;
 }
 
-void custom_list::insert(std::string str)
+int custom_list::insert(std::string str)
 {
 	list_node* curr = head.get();
 
@@ -19,7 +19,7 @@ void custom_list::insert(std::string str)
 		if (curr->get_string().compare(str) == 0) //if string already exists
 		{
 			curr->incr_count();
-			return;
+			return 0;
 		}
 		curr = curr->get_next();
 	}
@@ -39,18 +39,17 @@ void custom_list::insert(std::string str)
 		head = std::move(new_node);
 	}
 	length++;
-	return;
+	return 0;
 }
 
-void custom_list::delete_one(std::string str)
+int custom_list::delete_one(std::string str)
 {
 	list_node* prev = nullptr;
 	list_node* curr;
 
 	if (head == nullptr)
 	{
-		error_string_not_found();
-		return;
+		return -1;
 	}
 	curr = head.get();
 
@@ -71,24 +70,22 @@ void custom_list::delete_one(std::string str)
 				}
 				length--;
 			}
-			return;
+			return 0;
 		}
 		prev = curr;
 		curr = curr->get_next();
 	}
-	error_string_not_found();
-	return;
+	return -1;
 }
 
-void custom_list::delete_all(std::string str)
+int custom_list::delete_all(std::string str)
 {
 	list_node* prev = nullptr;
 	list_node* curr;
 
 	if (head == nullptr)
 	{
-		error_string_not_found();
-		return;
+		return -1;
 	}
 	curr = head.get();
 
@@ -105,13 +102,12 @@ void custom_list::delete_all(std::string str)
 				prev->set_next(std::move(curr->get_next_ptr()));
 			}
 			length--;
-			return;
+			return 0;
 		}
 		prev = curr;
 		curr = curr->get_next();
 	}
-	error_string_not_found();
-	return;
+	return -1;
 }
 
 int custom_list::search(std::string str)
@@ -120,7 +116,6 @@ int custom_list::search(std::string str)
 
 	if (head == nullptr)
 	{
-		//error_string_not_found();
 		return -1;
 	}
 	curr = head.get();
@@ -129,7 +124,6 @@ int custom_list::search(std::string str)
 	{
 		if (curr->get_string().compare(str) == 0)
 		{
-			//std::cout << curr->get_string() << ": " << curr->get_count() << std::endl;
 			return 0;
 		}
 		curr = curr->get_next();
@@ -153,11 +147,6 @@ void custom_list::print()
 		curr = curr->get_next();
 	}
 	return;
-}
-
-void custom_list::error_string_not_found()
-{
-	std::cout << "string does not exist" << std::endl;
 }
 
 void custom_list::init_dictionary()

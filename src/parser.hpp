@@ -7,6 +7,10 @@ Student ID: s3486075
 #include <boost/program_options.hpp>
 #include <iostream>
 
+/*
+@class parser parses the command line arguments
+*/
+
 class parser
 {
 	private:

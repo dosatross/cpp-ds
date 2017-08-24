@@ -7,6 +7,13 @@ Student ID: s3486075
 #include <string>
 #include <memory>
 
+/*
+@class list_node contains all methods to interface with the node
+list_node only supports the std::string data type
+each node owns (through unique_ptr) the next node
+each node has a count for each string to avoid duplicates in the list
+*/
+
 class list_node
 {
 	private:

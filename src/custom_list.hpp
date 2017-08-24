@@ -8,6 +8,11 @@ Student ID: s3486075
 #include "list_node.hpp"
 #include "datastructure.hpp"
 
+/*
+@class custom_list contains all methods to interface with the linked list
+as well as methods to interface with the linked list dictionary
+this class inherits from the datastructure class
+*/
 
 class custom_list : public datastructure
 {
@@ -20,12 +25,11 @@ class custom_list : public datastructure
 	public:
 		custom_list();
 		virtual ~custom_list() {}
-		void insert(std::string str);
+		int insert(std::string str);
 		int search(std::string str);
-		void delete_one(std::string str);
-		void delete_all(std::string str);
+		int delete_one(std::string str);
+		int delete_all(std::string str);
 		void print();
-		void error_string_not_found();
 		void add_line_to_dict(std::string);
 		void add_line_to_word_map(std::string);
 		void send_word_count_to_file(std::ofstream &out_stream);
