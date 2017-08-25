@@ -10,7 +10,7 @@ custom_bst::custom_bst()
 }
 
 /*
-inserts a string. returns 0 for success
+inserts a string. returns 0 for success and -1 for failure
 */
 int custom_bst::insert(std::string str)
 {
@@ -60,6 +60,7 @@ int custom_bst::insert(std::string str)
 			return 0;
 		}
 	}
+	return -1;
 }
 
 /*
