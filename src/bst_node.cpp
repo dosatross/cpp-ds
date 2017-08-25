@@ -23,11 +23,13 @@ void bst_node::set_string(std::string new_string)
 	str = new_string;
 }
 
+/*
+node accessors for traversal
+*/
 bst_node* bst_node::get_left()
 {
 	return left.get();
 }
-
 
 bst_node* bst_node::get_right()
 {
@@ -39,6 +41,9 @@ bst_node* bst_node::get_parent()
 	return parent;
 }
 
+/*
+node accessor for change of ownership
+*/
 std::unique_ptr<bst_node>& bst_node::get_left_ptr()
 {
 	return left;
@@ -47,7 +52,6 @@ std::unique_ptr<bst_node>& bst_node::get_right_ptr()
 {
 	return right;
 }
-
 
 unsigned bst_node::get_count()
 {

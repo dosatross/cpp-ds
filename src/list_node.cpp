@@ -11,11 +11,17 @@ list_node::list_node(std::string &s)
 	next = nullptr;
 }
 
+/*
+node accessor for change of ownership
+*/
 std::unique_ptr<list_node>& list_node::get_next_ptr()
 {
 	return next;
 }
 
+/*
+node accessor for traversal
+*/
 list_node* list_node::get_next()
 {
 	return next.get();

@@ -21,13 +21,10 @@ It will:
 
 
 
-To compile:
 
-run `make  `
+To compile: `make  `
 
-To run:
-
-./test_datastructures -s datastructure -d dictionary -t textfile (-o outputfile)
+To run: `./test_datastructures -s datastructure -d dictionary -t textfile (-o outputfile)`
 
 where datastructure is: `list`, `set`, `vector`, `custom_list` or `custom_tree`
 

@@ -18,7 +18,7 @@ each node has a count for each string to avoid duplicates in the bst
 class bst_node
 {
 	private:
-		unsigned count;
+		unsigned count; 
 		std::string str;
 		std::unique_ptr<bst_node> left;
 		std::unique_ptr<bst_node> right;

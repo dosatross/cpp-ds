@@ -4,7 +4,9 @@ Student ID: s3486075
 */
 #include "parser.hpp"
 
-
+/*
+parses command line arguments
+*/
 int parser::parse()
 {
 	namespace po = boost::program_options;

@@ -8,9 +8,9 @@ Student ID: s3486075
 #include <vector>
 
 /*
-@class vector class contains an std::vector and implements the methods for adding a word
-to the vector dictionary, adding a line to the word count map and sending the 
-word count data to a csv
+@class vector class contains an std::vector and implements the methods for 
+adding a word to the vector dictionary, adding a line to the word count map and 
+sending the word count data to a csv
 this class inherits from the datastructure class
 */
 

@@ -5,8 +5,11 @@ Student ID: s3486075
 #include "datastructure.hpp"
 
 
+/*
+takes two strings and returns edit distance between two strings
+*/
 unsigned datastructure::edit_distance(std::string str1, std::string str2)
-{//two words that are the same edit distance? use a heap grab the ones that float to the top all the ones with the min value
+{
 	std::vector<std::vector<unsigned>> dist_table;
 	unsigned str1_len = str1.length();
 	unsigned str2_len = str2.length();
@@ -35,7 +38,8 @@ unsigned datastructure::edit_distance(std::string str1, std::string str2)
 			}
 			else
 			{
-				dist_table[i][j] = 1 + std::min(std::min(dist_table[i][j - 1], dist_table[i - 1][j]), dist_table[i - 1][j - 1]);
+				dist_table[i][j] = 1 + std::min(std::min(dist_table[i][j - 1], 
+					dist_table[i - 1][j]), dist_table[i - 1][j - 1]);
 			}
 		}
 	}
